@@ -504,3 +504,4 @@ function result() {
         amountWon.innerHTML = "ربحت : مليون ريال";
     }
 }
+
