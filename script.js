@@ -47,12 +47,18 @@ window.addEventListener("load", () => {
 })
 // Display question and options
 function generateQuestion() {
-    questionText.innerHTML = quiz[questionIndex].question;
+    if (quiz[questionIndex].type === "image") {
+        questionText.innerHTML = `<img src="${quiz[questionIndex].question}" alt="Question Image" style="max-width:100%; height:auto;">`;
+    } else {
+        questionText.textContent = quiz[questionIndex].question;
+    }
+
     optionText[0].textContent = quiz[questionIndex].options[0];
     optionText[1].textContent = quiz[questionIndex].options[1];
     optionText[2].textContent = quiz[questionIndex].options[2];
     optionText[3].textContent = quiz[questionIndex].options[3];
 }
+
 // Fetch questions from question.json
 fetch("questions.json")
     .then(res => {
@@ -206,7 +212,7 @@ function enableOptions() {
 function disableAllLifeLines() {
     askBtn.style.pointerEvents = "none";
     CallBtn.style.pointerEvents = "none";
-    fify50Btn.style.pointerEvents = "none";
+    // fify50Btn.style.pointerEvents = "none";
 }
 // Show next question button
 function showNextBtn() {  
@@ -425,8 +431,8 @@ function callFriend() {
     lifelineBox.classList.add("show");
     callView.classList.add("show");
     let ansCall = {
-        "one": ["The answer is", "I'm 100% sure the answer is"],
-        "two": ["I think the answer is","I'm not sure, maybe" ]
+        "one": ["الجواب هو "],
+        "two": ["أعتقد أن الإجابة هي" ]
     }
     inGamePlay.pause();
     callPlay.play();
@@ -480,21 +486,21 @@ function result() {
     if (questionIndex < 4) {
         lifelineBox.classList.add("show");
         amountWon.classList.add("show");
-        amountWon.innerHTML = "You won: $0";
+        amountWon.innerHTML = "{ربحت : 0 ريال}";
     }
     else if (questionIndex >= 4 && questionIndex < 9) {
         lifelineBox.classList.add("show");
         amountWon.classList.add("show");
-        amountWon.innerHTML = "You won: $1000";
+        amountWon.innerHTML = "ربحت : 5000 ريال";
     }
     else if (questionIndex >= 9 && questionIndex < 14) {
         lifelineBox.classList.add("show");
         amountWon.classList.add("show");
-        amountWon.innerHTML = "You won: $32,000";
+        amountWon.innerHTML = "ربحت : 50000 ريال";
     }
     else if (questionIndex >= 14) {
         lifelineBox.classList.add("show");
         amountWon.classList.add("show");
-        amountWon.innerHTML = "You won: $1 Million";
+        amountWon.innerHTML = "ربحت : مليون ريال";
     }
 }
