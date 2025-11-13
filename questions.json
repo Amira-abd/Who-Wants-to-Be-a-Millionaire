@@ -83,13 +83,13 @@
             "answer": 2
         },
         {
-            "question": "img/img1.png",
+            "question": "img/img1.PNG",
             "options": ["09:05", "04:45", "09:25", "05:45"],
             "type": "image",
             "answer": 1
         },
         {
-            "question": "img/img5.png",
+            "question": "img/img5.PNG",
             "options": ["05:15", "05:03", "05:10", "05:45"],
             "type": "image",
             "answer": 0
